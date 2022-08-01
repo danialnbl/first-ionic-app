@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add New Task</ion-title>
+    <ion-icon slot="end" name="close" size="large" class="ion-padding" (click)="dismiss()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-textarea [(ngModel)]="taskName" placeholder="Write your task here">
+      </ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Priority</ion-label>
+      <ion-select [(ngModel)]="taskPriority">
+        <ion-select-option value="Low">Low</ion-select-option>
+        <ion-select-option value="Middle">Middle</ion-select-option>
+        <ion-select-option value="High">High</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="calendar-outline"></ion-icon>
+      <ion-label>Due Date</ion-label>
+      <ion-input value="{{ taskDate | date: 'dd.MM.yyyy' }}" id="date" class="ion-text-end ion-padding" ></ion-input>
+      <ion-popover trigger="date" size="cover">
+        <ng-template>
+          <ion-datetime presentation="date" [(ngModel)]="taskDate"></ion-datetime>
+        </ng-template>
+      </ion-popover>
+      <!-- <ion-datetime display-format="DD.MM.YYYY HH:mm" picker-format="DD.MM.YYYY HH:mm"></ion-datetime> -->
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="pricetag-outline"></ion-icon>
+      <ion-label>Category</ion-label>
+      <span>{{taskCategory}}</span>
+    </ion-item>
+    <ion-item>
+      <ion-chip *ngFor="let category of categories; let i = index" (click)="selectedCategory(i)" color="primary" mode="ios" outline="true">
+        <ion-label>{{category}}</ion-label>
+      </ion-chip>
+    </ion-item>
+    <ion-button (click)="AddTask()" expand="block" class="ion-margin">
+      Add Task
+    </ion-button>
+  </ion-card>
+</ion-content>
