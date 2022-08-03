@@ -44,7 +44,7 @@ export class UpdateTaskPage implements OnInit {
     
     let uid = this.task.key
 
-    if (uid!=null){
+    if (uid){
       await this.todoService.updateTask(uid,this.taskObject)
     }
     else{
