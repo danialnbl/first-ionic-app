@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'blank',
     loadChildren: () => import('./blank/blank.module').then( m => m.BlankPageModule)
   },
+  {
+    path: 'update-task',
+    loadChildren: () => import('./update-task/update-task.module').then( m => m.UpdateTaskPageModule)
+  },
 ];
 
 @NgModule({
